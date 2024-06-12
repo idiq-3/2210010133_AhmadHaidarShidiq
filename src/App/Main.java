@@ -20,7 +20,9 @@ public class Main {
 //          myObject.readUser("12345");
 //          myObject.updateUser("12345", "shidiq", "dikiyy","1234","idiq112@gmail.com");
 //          myObject.deleteUser("123");
-          
+//          myObject.GetRecordUser();
+//          System.out.println("Jumlah Data : "+myObject.JumlahRecordUser());
+//          
           
     }
     

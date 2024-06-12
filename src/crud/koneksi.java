@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -83,6 +84,43 @@ public class koneksi {
             System.out.println(e.getMessage());
         }
     }
+   public void GetRecordUser(){
+       try {
+           String sql = "SELECT * FROM tb_user ORDER BY id_user asc";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           while (data.next()){
+               System.out.println(
+               data.getString("id_user") + " | " +
+               data.getString("nama_user") + " | " +
+               data.getString("user_name") + " | " +
+               data.getString("password") + " | " +
+               data.getString("email")
+               );
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+   }
+   public int JumlahRecordUser(){
+       int jumlah = 0;
+       try {
+           String sql = "SELECT * FROM tb_user ORDER BY id_user ASC";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           
+           while(data.next()){
+               jumlah = jumlah + 1;
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+       return jumlah;
+   }
+   
+   
    public void createBukuTamu(String id_bukutamu, String id_user, String nama_tamu, String email, String perihal) {
         String sql = "INSERT INTO tb_bukutamu ( id_bukutamu, id_user, nama_tamu, email, perihal) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement perintah = koneksiDB.prepareStatement(sql)) {
@@ -137,6 +175,42 @@ public class koneksi {
             System.out.println(e.getMessage());
         }
     }
+   public void GetRecordBukuTamu(){
+       try {
+           String sql = "SELECT * FROM tb_bukutamu ORDER BY id_user asc";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           while (data.next()){
+               System.out.println(
+               data.getString("id_bukutamu") + " | " +
+               data.getString("id_user") + " | " +
+               data.getString("nama_tamu") + " | " +
+               data.getString("email") + " | " +
+               data.getString("perihal")
+               );
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+   }
+   public int JumlahRecordBukuTamu(){
+       int jumlah = 0;
+       try {
+           String sql = "SELECT * FROM tb_bukutamu ORDER BY id_user ASC";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           
+           while(data.next()){
+               jumlah = jumlah + 1;
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+       return jumlah;
+   }
+   
    public void createAdmin(String id_admin, String nama_admin, String kategori, String telepon, String username, String password, String level, String column ) {
         String sql = "INSERT INTO tb_admin ( id_admin, nama_admin, nama_tamu, kategori, telepon, username, password, level, column) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement perintah = koneksiDB.prepareStatement(sql)) {
@@ -200,6 +274,46 @@ public class koneksi {
             System.out.println(e.getMessage());
         }
     }
+   public void GetRecordAdmin(){
+       try {
+           String sql = "SELECT * FROM tb_admin ORDER BY id_user asc";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           while (data.next()){
+               System.out.println(
+               data.getString("id_admin") + " | " +
+               data.getString("nama_admin") + " | " +
+               data.getString("kategori") + " | " +
+               data.getString("telepon") + " | " +
+               data.getString("username") + " | " +
+               data.getString("password") + " | " +
+               data.getString("level") + " | " +
+               data.getString("column")
+               );
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+   }
+   public int JumlahRecordAdmin(){
+       int jumlah = 0;
+       try {
+           String sql = "SELECT * FROM tb_admin ORDER BY id_user ASC";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           
+           while(data.next()){
+               jumlah = jumlah + 1;
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+       return jumlah;
+   }
+   
+   
    public void createKategoriAdmin(String id_kategori, String nama_kategori, String hak_akses) {
         String sql = "INSERT INTO tb_kategori_admin ( id_kategori, nama_kategori, hak_akses) VALUES (?, ?, ?)";
         try (PreparedStatement perintah = koneksiDB.prepareStatement(sql)) {
@@ -248,5 +362,38 @@ public class koneksi {
             System.out.println(e.getMessage());
         }
     }
+   public void GetRecordKategoriAdmin(){
+       try {
+           String sql = "SELECT * FROM tb_kategori_admin ORDER BY id_user asc";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           while (data.next()){
+               System.out.println(
+               data.getString("id_kategori") + " | " +
+               data.getString("nama_kategori") + " | " +
+               data.getString("hak_akses")
+               );
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+   }
+   public int JumlahRecordKategoriAdmin(){
+       int jumlah = 0;
+       try {
+           String sql = "SELECT * FROM tb_kategori_admin ORDER BY id_user ASC";
+           Statement perintah = koneksiDB.createStatement();
+           
+           ResultSet data = perintah.executeQuery(sql);
+           
+           while(data.next()){
+               jumlah = jumlah + 1;
+           }
+       } catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
+       return jumlah;
+   }
 
 }
